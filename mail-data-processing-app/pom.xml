@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ru.smirnov</groupId>
-    <artifactId>MailDataProcessingApp</artifactId>
+    <artifactId>Mail-data-processing-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>MailDataProcessingApp</name>
+    <name>mail-data-processing-app</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
