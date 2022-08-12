@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: H2
+    active: mem
 
   mvc:
     pathmatch:
