@@ -24,12 +24,12 @@ public class SendJsonToMainApp {
         final int postOfficeIndex = 123321;
         final String postOfficeName = "У Никиты в очке";
         final String addressPostOffice = "Серпухов";
-       /*registerPostOffice(postOfficeIndex,postOfficeName,addressPostOffice);
-       registerPostPath(postOfficeName,identification);*/
+       registerPostOffice(postOfficeIndex,postOfficeName,addressPostOffice);
+       registerPostPath(postOfficeName,identification, postOfficeIndex,addressPostOffice);
     }
 
     public static void registerRecipient(int index, String address, String name, int identification){
-final String url = "http://localhost:8090/receiver/registration";
+final String url = "http://localhost:8091/receiver/registration";
         Map<String,Object> jsonData = new HashMap<>();
 
 jsonData.put("index", index);
@@ -42,15 +42,17 @@ makePostRequestWithJSONData(url,jsonData);
     }
 
     public static void registerTypeOfPost(String type, int identification){
-        final String url = "http://localhost:8090/typesOfPost/registration";
+        final String url = "http://localhost:8091/typesOfPost/registration";
         Map<String,Object> jsonData = new HashMap<>();
         jsonData.put("type",type);
-        jsonData.put("recipient_identification", Map.of("identification",identification));
+        Map<String,Object> mapToMap = new HashMap<>();
+        mapToMap.put("identification", identification);
+        jsonData.put("receiverIdentification", mapToMap);
         makePostRequestWithJSONData(url,jsonData);
     }
 
-/*    public static void registerPostOffice(int postOfficeIndex, String postOfficeName, String addressPostOffice){
-        final String url = "http://localhost:8090/PostOffice/registerPostOffice";
+    public static void registerPostOffice(int postOfficeIndex, String postOfficeName, String addressPostOffice){
+        final String url = "http://localhost:8091/postOffice/savePostOffice";
         Map<String,Object> jsonData = new HashMap<>();
         jsonData.put("index", postOfficeIndex);
         jsonData.put("name", postOfficeName);
@@ -58,13 +60,20 @@ makePostRequestWithJSONData(url,jsonData);
         makePostRequestWithJSONData(url,jsonData);
     }
 
-    public static void registerPostPath(String postOfficeName, int identification){
-        final String url = "http://localhost:8090/postPath/registerPostPath";
+    public static void registerPostPath(String postOfficeName, int identification
+            , int postOfficeIndex, String addressPostOffice){
+        final String url = "http://localhost:8091/postPath/save";
         Map<String,Object> jsonData = new HashMap<>();
-        jsonData.put("post_office_name",Map.of("name",postOfficeName));
-        jsonData.put("recipient_identification",Map.of("identification",identification));
+        Map<String,Object> mapToMap = new HashMap<>();
+        Map<String,Object> mapToMap2 = new HashMap<>();
+        mapToMap.put("name",postOfficeName);
+        mapToMap.put("index",postOfficeIndex);
+        mapToMap.put("address", addressPostOffice);
+        jsonData.put("postOfficeName",mapToMap);
+        mapToMap2.put("identification", identification);
+        jsonData.put("receiverIdentification",mapToMap2);
         makePostRequestWithJSONData(url,jsonData);
-    }*/
+    }
     private static void makePostRequestWithJSONData(String url, Map<String, Object> jsonData) {
         final RestTemplate restTemplate = new RestTemplate();
 

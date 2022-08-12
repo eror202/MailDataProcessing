@@ -11,18 +11,19 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "TYPES_OF_POST")
+@Table(name = "types_of_post")
 public class TypesOfPost implements Serializable {
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     private int id;
 
-    @Column(name = "TYPE")
+    @Column(name = "type")
     private String type;
 
     @ManyToOne
-    @JoinColumn(name = "RECEIVER_IDENTIFICATION", referencedColumnName = "IDENTIFICATION")
+    @JoinColumn(name = "receiver_identification", referencedColumnName = "identification")
     private Receiver receiverIdentification;
 
 }

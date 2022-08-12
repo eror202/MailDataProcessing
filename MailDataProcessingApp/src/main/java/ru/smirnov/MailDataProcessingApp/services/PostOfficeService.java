@@ -7,6 +7,7 @@ import ru.smirnov.MailDataProcessingApp.models.PostOffice;
 import ru.smirnov.MailDataProcessingApp.repositories.PostOfficeRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -21,5 +22,14 @@ public class PostOfficeService {
     @Transactional
     public void savePostOffice(PostOffice postOffice){
         postOfficeRepository.save(postOffice);
+    }
+
+    @Transactional
+    public void updatePostOffice(int index, PostOffice postOffice){
+        PostOffice postOfficeToUpdate = postOfficeRepository.getReferenceByIndex(index).get();
+        postOfficeToUpdate.setName(postOffice.getName());
+        postOfficeToUpdate.setAddress(postOffice.getAddress());
+        postOfficeToUpdate.setIndex(postOffice.getIndex());
+        postOfficeRepository.save(postOfficeToUpdate);
     }
 }

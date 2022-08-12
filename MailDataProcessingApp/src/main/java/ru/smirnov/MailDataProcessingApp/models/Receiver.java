@@ -5,12 +5,14 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.Instant;
 
 @Entity
 @Table(name = "RECEIVER")
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Receiver implements Serializable {
 
     @Id
@@ -34,7 +36,7 @@ public class Receiver implements Serializable {
     private boolean isDelivered;
 
     @Column(name = "TIME_OF_DELIVERED")
-    private String timeOfDelivered;
+    private Instant timeOfDelivered;
 
     @Column(name = "IDENTIFICATION")
     private int identification;

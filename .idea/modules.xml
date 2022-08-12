@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MailDataProcessingApp/MailDataProcessingApp.iml" filepath="$PROJECT_DIR$/MailDataProcessingApp/MailDataProcessingApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SendJsonToMainApp/SendJsonToMainApp.iml" filepath="$PROJECT_DIR$/SendJsonToMainApp/SendJsonToMainApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/feignClient/feignClient.iml" filepath="$PROJECT_DIR$/feignClient/feignClient.iml" />
+    </modules>
+  </component>
+</project>

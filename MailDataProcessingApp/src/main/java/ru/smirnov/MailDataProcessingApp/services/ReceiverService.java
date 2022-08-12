@@ -6,7 +6,9 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.smirnov.MailDataProcessingApp.models.Receiver;
 import ru.smirnov.MailDataProcessingApp.repositories.ReceiverRepository;
 
+import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -23,5 +25,20 @@ public class ReceiverService {
     @Transactional
     public void saveReceiver(Receiver receiver){
         receiverRepository.save(receiver);
+    }
+
+    @Transactional
+    public void updateReceiver(int identification, Receiver receiver){
+        Receiver receiverToUpdate = receiverRepository.getReferenceByIdentification(identification).get();
+        receiverToUpdate.setName(receiver.getName());
+        receiverToUpdate.setIndex(receiver.getIndex());
+        receiverToUpdate.setAddress(receiver.getAddress());
+        receiverRepository.save(receiverToUpdate);
+    }
+    @Transactional
+    public void delivered(int identification){
+        Receiver receiverToUpdate = receiverRepository.getReferenceByIdentification(identification).get();
+        receiverToUpdate.setDelivered(true);
+        receiverToUpdate.setTimeOfDelivered(Instant.now());
     }
 }
