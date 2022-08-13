@@ -19,7 +19,7 @@ spring:
     url: jdbc:h2:tcp://localhost/~/data/MailDataProcessingDB
     password: 123321
     user: eror
-    locations: classpath:db/migration
+    locations: classpath:h2/migration
 server:
   port: 8091
 
