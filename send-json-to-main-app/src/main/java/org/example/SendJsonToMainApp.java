@@ -22,7 +22,7 @@ public class SendJsonToMainApp {
         registerTypeOfPost(type,identification);
 
         final int postOfficeIndex = 123321;
-        final String postOfficeName = "У Никиты в очке";
+        final String postOfficeName = "Серпуховское отделение";
         final String addressPostOffice = "Серпухов";
        registerPostOffice(postOfficeIndex,postOfficeName,addressPostOffice);
        registerPostPath(postOfficeName,identification, postOfficeIndex,addressPostOffice);
