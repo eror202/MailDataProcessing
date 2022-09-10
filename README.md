@@ -5,4 +5,5 @@ properties.yml). feign-client для микросервисной имитаци
       JDK 1.8  
     Spring(Boot  JPA  Validation  Web)    
 PostgreSQL  
-H2
+H2  
+Инструкция по запуску в IDEA: в проекте настроен профиль в application.yaml по запуску базы данных H2 в оперативной памяти. Для оценки работоспособности запустите mail-data-processing-app, далее запустите скрипт send-json-to-main-app, который отправит данные на запущенный сервер, объекты поместятся в базу данных. 
